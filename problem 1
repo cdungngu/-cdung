@@ -1,0 +1,21 @@
+def checkInput(prompt):
+    x = input(prompt)
+    flag = 0
+    while flag == 0:
+        try:   x = float(x)
+        except:
+            print("Error, please enter numeric input")
+            x = input(prompt)
+        else: flag = 1
+    return x 
+grade = checkInput("Enter the grade:")
+if grade >= 8.5:
+    print('Diem chu: A - Diem he 4: 4.0')
+elif grade >= 7.0:
+    print('Diem chu: B - Diem he 4: 3.5')
+elif grade >= 5.5:
+    print('Diem chu: C - Diem he 4: 3.0')
+elif grade >= 4.0:
+    print('Diem chu: D - Diem he 4: 1.5')
+else:
+    print('Diem chu: F - Diem he 4: 0')
