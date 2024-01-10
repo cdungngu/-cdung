@@ -1,0 +1,13 @@
+def remove_duplicates(arr):
+    unique_numbers = list(set(arr))
+    return unique_numbers
+
+try:
+    input_str = input("Enter the values of the array separated by spaces: ")
+    input_list = list(map(int, input_str.split()))
+except ValueError as e:
+    print(f"Error: {e}")
+    exit()
+unique_numbers = remove_duplicates(input_list)
+print("Output:", " ".join(map(str, unique_numbers)))
+
