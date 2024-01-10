@@ -1,0 +1,28 @@
+def tim_phan_tu_gan_trung_binh(arr):    
+    trung_binh = sum(arr) / len(arr)
+    phan_tu_gan_trung_binh = min(arr, key=lambda x: abs(x - trung_binh))
+    vi_tri = arr.index(phan_tu_gan_trung_binh)
+
+    return vi_tri
+
+
+try:
+    n = int(input("Nhập số lượng phần tử trong mảng: "))
+    if n <= 0:
+        raise ValueError("Số lượng phần tử phải lớn hơn 0.")
+except ValueError as e:
+    print(f"Lỗi: {e}")
+    exit()
+
+mang = {}
+
+for i in range(n):
+    try:
+        phan_tu = float(input(f"Nhập phần tử {i + 1}: "))
+    except ValueError:
+        print("Lỗi: Vui lòng nhập giá trị số hợp lệ.")
+        exit()
+
+    mang.append(phan_tu)
+vi_tri_gan_trung_binh = tim_phan_tu_gan_trung_binh(mang)
+print(f"Vị trí của phần tử gần trung bình nhất là: {vi_tri_gan_trung_binh + 1}")
