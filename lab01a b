@@ -1,0 +1,54 @@
+S1 = a * x**2 + b * x + c
+print(S1)
+
+
+X = b**2 - 4 * a * c
+S2 = a * c * b**2 if X > 0 else 0
+print("S2 =", S2)
+
+
+a = float(input("Enter the value of the triangle: "))
+b = float(input("Enter the value of the triangle: "))
+c = float(input("Enter the value of the triangle: "))
+
+
+if a + b > c and b + c > a and c + a > b:
+    
+    perimeter = a + b + c
+    s = perimeter / 2
+    area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+    print("Perimeter of the triangle:", perimeter)
+    print("Area of the triangle:", area)
+else:
+    print("a, b, c are not sides of a triangle.")
+
+def calculate_operations(num1, num2):
+    multiplication = num1 * num2
+    addition = num1 + num2
+    return multiplication, addition
+
+
+previous_number = 0
+for current_number in range(1, 11):
+    multiplication_result, addition_result = calculate_operations(previous_number, current_number)
+    print(f"Sum of {previous_number} and {current_number} is {addition_result}")
+    previous_number = current_number
+
+
+strings = ["Name", "Is", "James"]
+formatted_string = "**".join(strings)
+print(formatted_string)
+
+a = float(input("Enter the value of a: "))
+b = float(input("Enter the value of b: "))
+c = float(input("Enter the value of c: "))
+
+
+print(f"Octal representation of a: {oct(int(a))}")
+print(f"Octal representation of b: {oct(int(b))}")
+print(f"Octal representation of c: {oct(int(c))}")
+
+
+print(f"Value of a with 2 decimal places: {a:.2f}")
+print(f"Value of b with 2 decimal places: {b:.2f}")
+print(f"Value of c with 2 decimal places: {c:.2f}")
