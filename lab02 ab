@@ -1,0 +1,101 @@
+def print_func1(*args):
+   for i in args:
+        print(i)
+print("Printing values:")
+print_func1(20,40,60)
+print("Printing values:")
+print_func1(40,60)
+
+def Calculation(a, b):
+    return a + b, a - b, a * b
+res=Calculation(60,30)
+print(res)
+
+
+def showEmployee(a,b):
+    print("Name:", a, "pay", b )
+showEmployee("Ben","12000")
+showEmployee("Jessica","9000")
+
+def outer_function(a, b):
+    def inner_function(a, b):
+        return a + b
+    return inner_function(a, b) + 5
+
+res = outer_function(5, 10)
+print(res)
+
+
+n = int(input("Enter an integer number (n > 5): "))
+while n <= 5:
+    n = int(input("Re-enter an integer number (n > 5): "))
+
+S1 = sum(range(1, n + 1))
+
+S2 = 1
+for i in range(1, n + 1):
+    S2 *= i
+
+S3 = sum([i**2 for i in range(1, n + 1)])
+
+
+n = int(input("Re-enter an integer number to check for primality: "))
+is_prime = True
+if n > 1:
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            is_prime = False
+            break
+else:
+    is_prime = False
+
+print("S1 =", S1)
+print("S2 =", S2)
+print("S3 =", S3)
+print(f"{n} is Prime: {is_prime}")
+
+
+
+
+def prime_dividers(num):
+    dividers = []
+    for i in range(2, num + 1):
+        while num % i == 0:
+            dividers.append(i)
+            num //= i
+    return dividers
+
+m = int(input("Enter the first integer number (m): "))
+n = int(input("Enter the second integer number (n): "))
+
+common_prime_dividers = set(prime_dividers(m)) & set(prime_dividers(n))
+greatest_common_divider = gcd(m, n)
+least_common_multiple = lcm(m, n)
+
+print("Common Prime Dividers:", common_prime_dividers)
+print("Greatest Common Divider (GCD):", greatest_common_divider)
+print("Least Common Multiple (LCM):", least_common_multiple)
+n = int(input("Enter an integer number: "))
+while n <= 0:
+    n = int(input("Re-enter a positive integer number: "))
+
+
+binary_format = bin(n)[2:]
+
+n = int(input("Re-enter an integer number: "))
+digit_sum = sum(int(digit) for digit in str(n))
+
+
+m = int(str(n)[::-1])
+
+print("Binary Format of n:", binary_format)
+print("Sum of Digits of n:", digit_sum)
+print("Reverse of n (m):", m)
+
+
+m = int(input("Enter the first integer number (m): "))
+n = int(input("Enter the second integer number (n): "))
+
+palindromic_numbers = [num for num in range(m, n + 1) if str(num) == str(num)[::-1]]
+
+print("Palindromic Numbers in [m, n]:", palindromic_numbers)
