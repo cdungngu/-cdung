@@ -1,0 +1,154 @@
+#LAB3a
+#Q1
+#1
+for i in range(1, 6):
+    for j in range(1, i + 1):
+        print(j, end=' ')
+    print()
+#2
+x=int(input("Nhap 1 so bat ky: "))
+sum=(x*(x+1))/2
+print("Sum is:" ,sum)
+#Q2
+#1
+numbers = [50, 100, 150, 200, 250, 300, 400, 550]
+
+for num in numbers:
+    if num > 500:        
+        break  
+    elif num > 150:
+        continue  
+    elif num % 5 == 0:
+        print(f"{num}")
+#2
+number = int(input("Nhap 1 so bat ky: "))
+number_str = str(number)
+total_digits = len(number_str)
+print(f"The total number of digits in {number} is: {total_digits}")
+#3
+my_list = [10, 20, 30, 40, 50]
+for i in reversed(my_list):
+    print(i)
+#Q3
+#1
+def middle(character_str):
+    mid=len(character_str)
+    middle_start=(mid-4)//2
+    middle_end=middle_start+4
+    middle_4_chars=character_str[middle_start:middle_end]
+    return middle_4_chars
+result=middle('HoSongHu')
+print(result)
+#2
+s1 = input("Enter the first string (s1): ")
+s2 = input("Enter the second string (s2): ")
+middle_index = len(s1) // 2
+s3 = s1[:middle_index] + s2 + s1[middle_index:]
+print(f"The new string (s3) is: {s3}")
+#3
+def firstmiddlelast(s3, s4):
+    middleS1=len(s3)//2
+    middleS2=len(s4)//2
+    firstS1=s3[0]
+    firstS2=s4[0]
+    lastS1=s3[-1]
+    lastS2=s4[-1]
+    S3= firstS1+firstS2+s3[middleS1]+s4[middleS2]+lastS1+lastS2
+    return middleS1, middleS2, firstS1, firstS2, lastS1, lastS2, S3
+s3='America'
+s4='Japan'
+resul=firstmiddlelast(s3, s4)
+print(resul)
+#4
+def arrange_characters(input_string):
+    lowercase_characters = ''.join(char for char in input_string if char.islower())
+    uppercase_characters = ''.join(char for char in input_string if char.isupper())
+    other_characters = ''.join(char for char in input_string if not char.isalpha())
+
+    arranged_string = lowercase_characters + uppercase_characters + other_characters
+    return arranged_string
+input_str = input("Enter a string: ")
+result = arrange_characters(input_str)
+print(f"The arranged string is: {result}")
+#5
+def count_characters(string):
+    letter_count = digit_count = special_count = 0
+
+    for char in string:
+        if char.isalpha():
+            letter_count += 1
+        elif char.isdigit():
+            digit_count += 1
+        else:
+            special_count += 1
+
+    return letter_count, digit_count, special_count
+
+input_string = input("Enter a string: ")
+letters, digits, specials = count_characters(input_string)
+
+print(f"Letter count: {letters}")
+print(f"Digit count: {digits}")
+print(f"Special character count: {specials}")
+#Q5
+#1
+def extract_integers(input_string):
+    return ''.join(char for char in input_string if char.isdigit())
+
+input_str = "I am 25 years old and 10 months"
+result = extract_integers(input_str)
+
+print(f"The extracted integers are: {result}")
+#2
+def removesymbol(k):
+    return ''.join(filter(lambda x:x.isalnum() or x.isspace(), k))
+k= '/*Jon is @developer & musician'
+reu=removesymbol(k)
+print('Cau sau khi loai bo cac ki tu dac biet: ', reu)
+#3
+str_list=['Emma', 'Jon', '', 'Kelly', '', 'Eric','']
+resu1=list(filter(lambda x: x != '', str_list))
+print('Sau khi loai bo string rong ta duoc: ', resu1)
+#4
+str1='Emma-is-a-data-scientist'
+rem=str1.split('-')
+print(rem)
+#LAB3b
+#1
+def is_anagram(str1, str2):
+    
+    str1_cleaned = ''.join(char.lower() for char in str1 if char.isalnum())
+    str2_cleaned = ''.join(char.lower() for char in str2 if char.isalnum())
+
+   
+    return sorted(str1_cleaned) == sorted(str2_cleaned)
+
+
+string1 = input("Enter the first string: ")
+string2 = input("Enter the second string: ")
+
+if is_anagram(string1, string2):
+    print(f"{string1} is an anagram of {string2}.")
+else:
+    print(f"{string1} is not an anagram of {string2}.")
+#2
+def is_hexadecimal(string):
+    return all(char.isdigit() or char.lower() in 'abcdef' for char in string)
+
+def convert_to_base10(hex_string):
+    try:
+        decimal_value = int(hex_string, 16)
+        return decimal_value
+    except ValueError:
+        return None
+
+user_input = input("Enter a string: ")
+
+if is_hexadecimal(user_input):
+    decimal_value = convert_to_base10(user_input)
+    if decimal_value is not None:
+        print(f"The base-10 value is: {decimal_value}")
+    else:
+        print("Error: Unable to convert to base-10.")
+else:
+    print("Error: The input string contains non-hexadecimal characters.")
