@@ -1,0 +1,99 @@
+#Q1
+#1
+file=open('sales.txt','w')
+file.close()
+
+#2
+import datetime
+import os
+now = datetime.datetime.now()
+date_time_str = now.strftime("%Y-%m-%d_%H-%M-%S")
+file_name = f"sales_{date_time_str}.txt"
+with open(file_name, 'w') as file:
+    pass
+if not os.path.exists(file_name):
+    open(file_name, 'x').close()
+    
+#3
+import os
+filewpermission = open('sample.txt','x')
+os.chmod('sample.txt', 0o777)
+
+#Q2
+#1
+with open('output.txt', 'w') as file:
+    
+    file.write('Hello, this is some text that will be written to the file.')
+#2
+    print('Opening file again..')
+f=open('output.txt','w')
+with open('output.txt', 'w') as file:
+    file.write('This is overwritten content')
+f.close()
+f=open('output.txt','r')
+print(f.read())
+f.close()
+
+#3
+list1=['Name: Emma', 'Address: 221 Baker Street', 'City: London']
+with open('file1.txt', 'w') as file:
+    for i in list1:
+        file.write('%s\n'%i)
+f.close()
+f=open('file1.txt','r')
+print(f.read())
+f.close()
+
+#Q3
+#1
+f = open('file.txt','w') 
+f.seek(0,0)
+#2
+f.seek(0,2)
+f.write("\nThis content is added to the end of the file")
+#3
+f.seek(0,1)
+f.close() 
+#4
+f = open('file.txt','rb') 
+f.seek(-1,2)
+#5
+print('file handle at:', f.tell())
+f.close()
+
+#Q4
+import os
+import datetime
+
+def rename_file(file_path, new_name):
+    if os.path.exists(file_path):
+        os.rename(file_path, new_name)
+        print(f"File renamed successfully to {new_name}")
+    else:
+        print("File does not exist.")
+
+def rename_multiple_files(file_list):
+    for file_path, new_name in file_list:
+        rename_file(file_path, new_name)
+
+def rename_files_in_folder(folder_path, new_names):
+    for file_name, new_name in new_names.items():
+        file_path = os.path.join(folder_path, file_name)
+        rename_file(file_path, new_name)
+
+def rename_files_with_timestamp(file_list):
+    for file_path in file_list:
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        file_name, file_extension = os.path.splitext(file_path)
+        new_name = f"{file_name}_{timestamp}{file_extension}"
+        rename_file(file_path, new_name)
+
+def rename_file_extension(file_path, new_extension):
+    file_name, _ = os.path.splitext(file_path)
+    new_name = f"{file_name}.{new_extension}"
+    rename_file(file_path, new_name)
+
+def rename_and_move_file(file_path, new_path):
+    os.rename(file_path, new_path)
+    print(f"File moved and renamed successfully to {new_path}")
+
