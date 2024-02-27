@@ -144,8 +144,5 @@ def count_uppercase_chars(file_path):
                 count += 1
     return count
 
-# Example Usage
-file_path = 'sample_text.txt'
-uppercase_count = count_uppercase_chars(file_path)
-print(f"Number of uppercase characters in the file: {uppercase_count}")
+
 
