@@ -1,3 +1,4 @@
+#lab4a
 #Q1
 #1
 file=open('sales.txt','w')
@@ -97,3 +98,38 @@ def rename_and_move_file(file_path, new_path):
     os.rename(file_path, new_path)
     print(f"File moved and renamed successfully to {new_path}")
 
+#lab4b
+#Q1
+#1
+def readfile(name = 'poem.txt'):
+    with open(name, 'r') as f:
+        print(f.readline().strip())
+        print(f.readline().strip())
+        
+#2
+def count_line(file_name):
+    count=0
+    with open(file_name,'r') as file:
+        for line in file:
+            if not line.strip().startswith('T'):
+                count+=1
+    return count
+result=count_line('story.txt')
+
+#Q2
+#1
+def count_words_in_file(file_path):
+    with open(file_path, 'r') as file:
+        text = file.read()
+        words = text.split()
+        total_words = len(words)
+        print(f"Total number of words in the file: {total_words}")
+
+#2
+def display_words():
+    with open("story.txt", "r") as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                if len(word) < 4:
+                    print(word)
