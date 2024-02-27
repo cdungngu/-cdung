@@ -135,6 +135,7 @@ def display_words():
                     print(word)
 
 #Q3
+#1
 def count_uppercase_chars(file_path):
     count = 0
     with open(file_path, 'r') as file:
@@ -143,6 +144,21 @@ def count_uppercase_chars(file_path):
             if char.isupper():
                 count += 1
     return count
+#2
+def count_words1(file_path):
+    count1 = 0
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                words = line.split()
+                for i in words:
+                    if i == 'this' or i == 'these':
+                        count1 += 1
+        return count1
+    except FileNotFoundError:
+        print('File khong ton tai')
+result1 = count_words1('article.txt')
+print(result1)
 
 
 
