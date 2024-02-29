@@ -1,0 +1,198 @@
+#Q1
+#1
+a=[ ]
+b=[1, 2, 3]
+c=[1.0, 'Jessa', 3]
+print(a)
+print(c)
+print(b)
+
+#2
+lst1 = ['M','na','i','Ke']
+lst2 = ['y','me','s','lly']
+for i in range(len(lst1)):
+        print(lst1[i]+lst2[i],end=' ')
+        
+#Q2
+#1
+Lst=[]
+numbers=[1,2,3,4,5,6,7]
+for i in numbers:
+    S=i**2
+    Lst.append(S)
+print(Lst)
+
+#2
+lst = []
+list1 = ['Hello ','take ']
+list2 = ['Dear','Sir']
+for i in range(len(list1)):
+        for j in range(len(list2)):
+            tmp = list1[i]+list2[j]
+            lst.append(tmp)
+print(lst)
+
+#Q3
+#1
+dict1 = {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+dict2 = {'Thirty': 30, 'Fourty': 40, 'Fifty': 50}
+dict1.update(dict2)
+print(dict1)
+
+#2
+sampleDict = {'class':
+                  {'student':
+                   {'name':'Mike',
+                    'marks':
+                    {'physics':70,
+                     'history':80}
+                    }
+                   }
+                  }
+sampleDict = { 'class': { 'student': { 'name': 'Mike', 'marks': { 'physics': 70, 'history': 80 } } } }
+
+print(sampleDict['class']['student']['marks']['history'])
+#Q1
+#1
+a=[ ]
+b=[1, 2, 3]
+c=[1.0, 'Jessa', 3]
+print(a)
+print(c)
+print(b)
+
+#2
+lst1 = ['M','na','i','Ke']
+lst2 = ['y','me','s','lly']
+for i in range(len(lst1)):
+        print(lst1[i]+lst2[i],end=' ')
+        
+#Q2
+#1
+Lst=[]
+numbers=[1,2,3,4,5,6,7]
+for i in numbers:
+    S=i**2
+    Lst.append(S)
+print(Lst)
+
+#2
+lst = []
+list1 = ['Hello ','take ']
+list2 = ['Dear','Sir']
+for i in range(len(list1)):
+        for j in range(len(list2)):
+            tmp = list1[i]+list2[j]
+            lst.append(tmp)
+print(lst)
+
+#Q3
+#1
+dict1 = {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+dict2 = {'Thirty': 30, 'Fourty': 40, 'Fifty':
+#3
+employees = ['Kelly', 'Emma']
+defaults = {'designation': 'Developer', 'salary': 8000}
+output = {emp: defaults for emp in employees}
+print(output)
+
+#Q4
+#1
+tuple1 = ('Orange',[10,20,30],[5,15,25],20)
+print(tuple1[1][1])
+
+#2
+tuple1 = (10,20,30,40)
+a = tuple1[0]
+b = tuple1[1]
+c = tuple1[2]
+d = tuple1[3]
+
+#3
+tuple1 = (11,22)
+tuple2 = (99,88)
+tuple3 = tuple1
+tuple1 = tuple2
+tuple2 = tuple3
+print("tuple1:",tuple1)
+print("tuple2:",tuple2)
+
+#Q5
+#1
+str1 = 'hello,world!'
+all_freq = {}
+
+for i in str1:
+    if i.isalpha():
+        if i in all_freq:
+            all_freq[i] += 1
+        else:
+            all_freq[i] = 1
+            
+with open('output.txt','w') as file1:
+    for letter, count in sorted(all_freq.items()):
+        file1.write(f"{letter}: {count}\n")
+
+#Q6
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+
+def sequential_search(arr, key):
+    for i in range(len(arr)):
+        if arr[i] == key:
+            return i
+    return -1
+
+def binary_search_recursive(arr, low, high, key):
+    if high >= low:
+        mid = low + (high - low) // 2
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] > key:
+            return binary_search_recursive(arr, low, mid - 1, key)
+        else:
+            return binary_search_recursive(arr, mid + 1, high, key)
+    else:
+        return -1
+
+def binary_search_iterative(arr, key):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = low + (high - low) // 2
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+numbers = [64, 25, 12, 22, 11]
+selection_sort(numbers)
+print("Sorted Array:", numbers)
+
+key_seq = 22
+pos_seq = sequential_search(numbers, key_seq)
+if pos_seq != -1:
+    print(f"Found key at position: {pos_seq}")
+else:
+    print("Not Found!")
+
+key_bin = 25
+pos_bin_rec = binary_search_recursive(numbers, 0, len(numbers)-1, key_bin)
+if pos_bin_rec != -1:
+    print(f"Found key at position (Recursive Binary Search): {pos_bin_rec}")
+else:
+    print("Not Found!")
+
+pos_bin_iter = binary_search_iterative(numbers, key_bin)
+if pos_bin_iter != -1:
+    print(f"Found key at position (Iterative Binary Search): {pos_bin_iter}")
+else:
+    print("Not Found!")
