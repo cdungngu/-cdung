@@ -1,0 +1,115 @@
+class StudentManager:
+    def __init__(self):
+        self.pupils = {}
+
+    def create_pupil(self, rollno, name, m1, m2, m3, m4, m5):
+        if rollno not in self.pupils:
+            self.pupils[rollno] = {"name": name, "m1": m1, "m2": m2, "m3": m3, "m4": m4, "m5": m5}
+            x = input("Wants to enter more record (y/n)?: ")
+            if x == "y":
+                rollno = int(input("Enter roll number: "))
+                name = input("Enter name: ")
+                m1 = int(input("Enter Marks in English: "))
+                m2 = int(input("Enter Marks in Maths: "))
+                m3 = int(input("Enter Marks in Physics: "))
+                m4 = int(input("Enter Marks in Chemistry: "))
+                m5 = int(input("Enter Marks in CS: "))
+                self.create_pupil(rollno, name, m1, m2, m3, m4, m5)
+            elif x == "n":
+                self.admin_menu()
+        else:
+            print(f"Pupil with roll number '{rollno}' already exists.")
+
+    def display_all_pupils(self):
+        print("PUPIL Details..")
+        for rollno, pupil_info in self.pupils.items():
+            print(f"Roll Number: {rollno}\nName: {pupil_info['name']}\nEnglish: {pupil_info['m1']}\nMaths: {pupil_info['m2']}\nPhysics: {pupil_info['m3']}\nChemistry: {pupil_info['m4']}\nCS: {pupil_info['m5']}")
+        self.admin_menu()
+
+    def search_pupil(self, query):
+        found = False
+        for rollno, pupil_info in self.pupils.items():
+            if str(rollno) == query.lower():
+                print("PUPIL Details..")
+                print(f"Roll Number: {rollno}\nName: {pupil_info['name']}\nEnglish: {pupil_info['m1']}\nMaths: {pupil_info['m2']}\nPhysics: {pupil_info['m3']}\nChemistry: {pupil_info['m4']}\nCS: {pupil_info['m5']}")
+                found = True
+        if not found:
+            print(f"There is no roll number: '{query}'.")
+        self.admin_menu()
+
+    def modify_pupil(self, query):
+        query = int(query)
+        if query in self.pupils:
+            print(f"Name: {self.pupils[query]['name']}")
+            new1 = input("Wants to edit(y/n)? ")
+            if new1 == "y":
+                new_name = input("Enter the name: ")
+                self.pupils[query]['name'] = str(new_name)
+
+            print(f"English marks: {self.pupils[query]['m1']}")
+            new2 = input("Wants to edit(y/n)? ")
+            if new2 == "y":
+                new_m1 = input("Enter the mark: ")
+                self.pupils[query]['m1'] = new_m1
+
+            print(f"Maths marks: {self.pupils[query]['m2']}")
+            new3 = input("Wants to edit(y/n)? ")
+            if new3 == "y":
+                new_m2 = input("Enter the mark: ")
+                self.pupils[query]['m2'] = new_m2
+
+            print(f"Physics marks: {self.pupils[query]['m3']}")
+            new4 = input("Wants to edit(y/n)? ")
+            if new4 == "y":
+                new_m3 = input("Enter the mark: ")
+                self.pupils[query]['m3'] = new_m3
+
+            print(f"Chemistry marks: {self.pupils[query]['m4']}")
+            new5 = input("Wants to edit(y/n)? ")
+            if new5 == "y":
+                new_m4 = input("Enter the mark: ")
+                self.pupils[query]['m4'] = new_m4
+
+            print(f"CS marks: {self.pupils[query]['m5']}")
+            new6 = input("Wants to edit(y/n)? ")
+            if new6 == "y":
+                new_m5 = input("Enter the mark: ")
+                self.pupils[query]['m5'] = new_m5
+            print("Record updated")
+            print(f"Roll Number: {query}\nName: {self.pupils[query]['name']}\nEnglish: {self.pupils[query]['m1']}\nMaths: {self.pupils[query]['m2']}\nPhysics: {self.pupils[query]['m3']}\nChemistry: {self.pupils[query]['m4']}\nCS: {self.pupils[query]['m5']}")
+        else:
+            print(f"No record found for '{query}'. Cannot modify.")
+        self.admin_menu()
+
+    def delete_pupil(self, query):
+        query = int(query)
+        if query in self.pupils:
+            print("PUPIL Details..")
+            print(f"Roll Number: {query}\nName: {self.pupils[query]['name']}\nEnglish: {self.pupils[query]['m1']}\nMaths: {self.pupils[query]['m2']}\nPhysics: {self.pupils[query]['m3']}\nChemistry: {self.pupils[query]['m4']}\nCS: {self.pupils[query]['m5']}")
+            del self.pupils[query]
+            print("Record found and deleted")
+        else:
+            print(f"No record found for '{query}'. Cannot delete.")
+        self.admin_menu()
+
+    def admin_menu(self):
+        print('ADMIN MENU')
+        print('1. CREATE PUPIL RECORD')
+        print('2. DISPLAY ALL PUPILS RECORD')
+        print('3. SEARCH PUPIL RECORD')
+        print('4. MODIFY PUPIL RECORD')
+        print('5. DELETE PUPIL RECORD')
+        print('6. BACK TO MAIN MENU')
+        choice = input("Enter choice(1-6): ")
+        if choice == "1":
+            rollno = int(input("Enter roll number: "))
+            name = input("Enter name: ")
+            m1 = int(input("Enter Marks in English: "))
+            m2 = int(input("Enter Marks in Maths: "))
+            m3 = int(input("Enter Marks in Physics: "))
+            m4 = int(input("Enter Marks in Chemistry: "))
+            m5 = int(input("Enter Marks in CS: "))
+            self.create_pupil(rollno, name, m1, m2, m3, m4, m5)
+        elif choice == "2":
+            self.display_all_pupils()
+        elif choice
